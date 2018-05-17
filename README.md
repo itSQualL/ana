@@ -2,8 +2,7 @@
 
 ## RUN WITH DOCKER
 
-Install docker
-Install docker-compose
+Prerequisites: you need to install docker and docker-compose
 
 Run: `docker-compose build web`
 
