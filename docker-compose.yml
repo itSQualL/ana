@@ -3,11 +3,27 @@ services:
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - BUNDLE_PATH=/bundle
+      - GEM_HOME=/bundle
+      - BUNDLE_JOBS=2
+
     volumes:
       - .:/app
+      - gem_storage:/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
   db:
     image: postgres
+
+  bundle:
+    image: busybox
+    command: echo "OK"
+    volumes:
+      - gem_storage:/bundle
+
+volumes:
+  gem_storage:
+
