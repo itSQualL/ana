@@ -1,6 +1,6 @@
 # README
 
-## RUN WITH DOCKER
+## RUN WITH DOCKER ON DEVELOPMENT
 
 Prerequisites: you need to install docker and docker-compose
 
