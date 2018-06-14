@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2018_05_17_120536) do
     t.string "unconfirmed_email"
     t.string "name"
     t.string "nickname"
-    t.string "image"
     t.string "email"
+    t.boolean "admin", default: false, null: false
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -6,7 +6,7 @@ describe User, type: :model do
       name: "John",
       nickname: "Cena",
       email: "john@cena.com",
-      password: "asdfasdf"
+      password: "asdfasdf",
     }
   end
 
