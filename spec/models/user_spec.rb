@@ -1,23 +1,18 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  let(:good_attrs) do
-    {
-      name: "John",
-      nickname: "Cena",
-      email: "john@cena.com",
-      password: "asdfasdf",
-    }
-  end
+  let(:user1) { create(:user) }
+  let(:user2) { create(:user) }
 
-  let(:bad_attrs) do
-    {
-      name: "John",
-      nickname: "Cena",
-      email: "john@cena.com",
-      password: nil
-    }
-  end
+  let(:good_attrs) { { name: "John",
+                       nickname: "Cena",
+                       email: "john@cena.com",
+                       password: "asdfasdf" } }
+
+  let(:bad_attrs)  { { name: "John",
+                       nickname: "Cena",
+                       email: "john@cena.com",
+                       password: nil } }
 
   it "should be valid with good attributes" do
     expect(User.new(good_attrs)).to be_valid
@@ -25,5 +20,26 @@ describe User, type: :model do
 
   it "should be invalid with bad attributes" do
     expect(User.new(bad_attrs)).to_not be_valid
+  end
+
+  context "#follow" do
+    it "should follow other user" do
+      expect(user1.follow(user2.id)).to be_valid
+    end
+
+    it "shouldn't follow other user a twice" do
+      user1.follow(user2.id)
+      expect(user1.follow(user2.id)).to_not be_valid
+    end
+  end
+
+  context "#unfollow" do
+    it "should unfollow other followed user" do
+      user1.follow(user2.id)
+
+      expect { user1.unfollow(user2.id)}.to change {
+        user1.followees.count
+      }.from(1).to(0)
+    end
   end
 end
