@@ -6,7 +6,7 @@ RSpec.describe Relationship, type: :model do
 
   let(:good_attrs) { { follower_id: user1.id, followed_id: user2.id } }
   let(:bad_attrs) { { follower_id: user1.id } }
-  let(:autoblock_attrs) { { follower_id: user1.id, followed_id: user1.id } }
+  let(:autofollow_attrs) { { follower_id: user1.id, followed_id: user1.id } }
 
   it "should be valid with good attributes" do
     expect(Relationship.new(good_attrs)).to be_valid
@@ -17,6 +17,6 @@ RSpec.describe Relationship, type: :model do
   end
 
   it "shouldn't permit autofollow" do
-    expect(Relationship.new(af_attrs)).to_not be_valid
+    expect(Relationship.new(autofollow_attrs)).to_not be_valid
   end
 end

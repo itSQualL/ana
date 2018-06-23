@@ -13,8 +13,14 @@ class Api::V1::RelationshipsController < ApplicationController
   end
 
   def destroy
-    relationship = current_user.unfollow(params[:followed_id])
-    render json: relationship, status: :ok
+    relationship = current_user.unfollow(params[:id])
+
+    case relationship.try(:destroyed?)
+    when true
+      render json: relationship, status: :ok
+    when false || nil
+      render status: :unprocessable_entity
+    end
   end
 
   private
