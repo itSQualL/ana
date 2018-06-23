@@ -27,6 +27,6 @@ response**
     **Content:** `{"success":false,"errors":["Invalid login credentials. Please try again."]}`
 
 * **Sample Call:**
-  ```
+```
   curl -d '{"email":"pasepibt2o@pe2p2ito.es", "password":"asdfasdf"}' -H "Content-Type: application/json" -X POST http://localhost:3000/auth/sign_in
-  ```
+```

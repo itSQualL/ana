@@ -28,6 +28,6 @@ It creates a new user
     **Content:** `{"status":"error","data":{"id":null,"provider":"email","uid":"","allow_password_change":false,"name":"ana","nickname":"ana","email":"ppp@ppp.es","admin":false,"created_at":null,"updated_at":null},"errors":{"email":["has already been taken"],"nickname":["has already been taken"],"full_messages":["Email has already been taken","Nickname has already been taken"]}}`
 
 * **Sample Call:**
-  ```
+```
   curl -d '{"name":"ana", "nickname":"ana", "email":"ppp@ppp.es", "password":"asdfasdf"}' -H "Content-Type: application/json" -X POST http://localhost:3000/auth
-  ```
+```
