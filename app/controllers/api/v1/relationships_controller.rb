@@ -4,15 +4,12 @@ class Api::V1::RelationshipsController < ApplicationController
   def create
     relationship = current_user.follow(permitted_params[:followed_id])
 
-    response =
-      case relationship.valid?
-      when true
-        relationship
-      when false
-        relationship.errors
-      end
-
-    render json: response, status: :ok
+    case relationship.valid?
+    when true
+      render json: relationship, status: :ok
+    when false
+      render json: relationship.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
