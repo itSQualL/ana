@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
+      resources :blocks, only: [:create, :destroy]
       resources :relationships, only: [:create, :destroy]
     end
   end
