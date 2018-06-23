@@ -13,7 +13,7 @@ class Api::V1::RelationshipsController < ApplicationController
   end
 
   def destroy
-    relationship = current_user.unfollow(params[:user_id])
+    relationship = current_user.unfollow(params[:followed_id])
     render json: relationship, status: :ok
   end
 

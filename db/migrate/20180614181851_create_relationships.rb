@@ -6,7 +6,6 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
       t.references :followed, null: false, index: :true
 
       t.boolean  :allowed, default: false
-      t.boolean  :is_block, default: false
 
       t.timestamps
     end

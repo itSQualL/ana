@@ -42,4 +42,25 @@ describe User, type: :model do
       }.from(1).to(0)
     end
   end
+
+  context "#block" do
+    it "should block other user" do
+      expect(user1.block(user2.id)).to be_valid
+    end
+
+    it "shouldn't block other user a twice" do
+      user1.block(user2.id)
+      expect(user1.block(user2.id)).to_not be_valid
+    end
+  end
+
+  context "#unblock" do
+    it "should unblock other blocked user" do
+      user1.block(user2.id)
+
+      expect { user1.unblock(user2.id)}.to change {
+        user1.blocked_users.count
+      }.from(1).to(0)
+    end
+  end
 end
