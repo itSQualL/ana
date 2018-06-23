@@ -19,7 +19,7 @@ class Api::V1::RelationshipsController < ApplicationController
     when true
       render json: relationship, status: :ok
     when false || nil
-      render status: :unprocessable_entity
+      render status: :not_found
     end
   end
 

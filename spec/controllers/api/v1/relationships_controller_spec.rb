@@ -42,7 +42,7 @@ RSpec.describe Api::V1::RelationshipsController, type: :controller do
       login(user1)
       user1.follow(user2.id)
       delete :destroy, params: { id: 222939 }, format: :json
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:not_found)
     end
   end
 
