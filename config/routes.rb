@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :blocks, only: [:create, :destroy]
       resources :relationships, only: [:index, :create, :update, :destroy]
+      resources :notes, only: [:index, :create, :update, :destroy]
     end
   end
 end

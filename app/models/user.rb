@@ -18,9 +18,8 @@ class User < ActiveRecord::Base
   has_many :blocked_users, through: :blocks, source: :blocked
   has_many :blocked_by, through: :passive_blocks, source: :blocker
 
-  #has_many :notes
-
-  #scope :followees_notes -> { followees.notes.where(shared: true) }
+  has_many :notes
+  has_many :followees_notes, through: :followees, source: :notes
 
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
