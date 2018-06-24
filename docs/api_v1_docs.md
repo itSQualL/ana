@@ -14,7 +14,7 @@
 - `POST` - `/api/v1/relationships` - Follow an user
   [(docs)](./api/v1/relationships/create.md)
 
-- `PUT` - `/api/v1/relationships` - Allow a relationship
+- `PUT` - `/api/v1/relationships/:id` - Allow a relationship
   [(docs)](./api/v1/relationships/update.md)
 
 - `DELETE` - `/api/v1/relationships/:id` - Unfollow an user
@@ -34,7 +34,7 @@
 - `POST` - `/api/v1/notes` - Create a note
   [(docs)](./api/v1/notes/create.md)
 
-- `PUT` - `/api/v1/notes` - Update a note
+- `PUT` - `/api/v1/notes/:id` - Update a note
   [(docs)](./api/v1/notes/update.md)
 
 - `DELETE` - `/api/v1/notes/:id` - Removes a note
