@@ -8,6 +8,9 @@
 - `POST` - `/auth/sign_in` - Log In an user [(docs)](./auth/sign_in.md)
 
 ### RELATIONSHIPS
+- `GET` - `/api/v1/relationships` - List relationships with users
+  [(docs)](./api/v1/relationships/index.md)
+
 - `POST` - `/api/v1/relationships` - Follow an user
   [(docs)](./api/v1/relationships/create.md)
 

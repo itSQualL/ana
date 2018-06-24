@@ -5,6 +5,20 @@ RSpec.describe Api::V1::RelationshipsController, type: :controller do
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }
 
+  describe 'GET index' do
+    it "requires the user to be logged in" do
+      get :index, format: :json
+      expect(response).to have_http_status(:unauthorized)
+    end
+
+    it "lists users" do
+      login(user1)
+      user1.follow(user2.id)
+      get :index, params: { type: "pending_followees" }, format: :json
+      expect(json_response.count).to eq(1)
+    end
+  end
+
   describe 'POST create' do
     it "requires the user to be logged in" do
       post :create, params: { followed_id: user2.id }, format: :json

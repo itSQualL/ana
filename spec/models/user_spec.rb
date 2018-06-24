@@ -38,7 +38,7 @@ describe User, type: :model do
       user1.follow(user2.id)
 
       expect { user1.unfollow(user2.id)}.to change {
-        user1.followees.count
+        user1.pending_followees.count
       }.from(1).to(0)
     end
   end

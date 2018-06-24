@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
 
   has_many :relationships, foreign_key: "follower_id"
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id"
-  has_many :followees, through: :relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followees, -> { where( relationships: { allowed: true } ) }, through: :relationships, source: :followed
+  has_many :followers, -> { where( relationships: { allowed: true } ) }, through: :passive_relationships, source: :follower
+  has_many :pending_followees, -> { where( relationships: { allowed: false} ) }, through: :relationships, source: :followed
+  has_many :pending_followers, -> { where( relationships: { allowed: false} ) }, through: :passive_relationships, source: :follower
 
   has_many :blocks, foreign_key: "blocker_id"
   has_many :passive_blocks, class_name: "Block", foreign_key: "blocked_id"

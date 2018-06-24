@@ -1,6 +1,24 @@
 class Api::V1::RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    users =
+      case params[:type]
+      when "followees"
+        current_user.followees
+      when "followers"
+        current_user.followers
+      when "pending_followees"
+        current_user.pending_followees
+      when "pending_followers"
+        current_user.pending_followers
+      else
+        current_user.followees
+      end
+
+    render json: users, status: :ok
+  end
+
   def create
     relationship = current_user.follow(permitted_params[:followed_id])
 
