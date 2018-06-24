@@ -30,6 +30,18 @@ class Api::V1::RelationshipsController < ApplicationController
     end
   end
 
+  def update
+    relationship = current_user.passive_relationships.find_by(follower_id: params[:id])
+    relationship.allowed = params[:allowed]
+
+    case relationship.save
+    when true
+      render json: relationship, status: :ok
+    when false
+      render json: relationship.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     relationship = current_user.unfollow(params[:id])
 

@@ -39,6 +39,20 @@ RSpec.describe Api::V1::RelationshipsController, type: :controller do
     end
   end
 
+  describe 'PUT update' do
+    it "requires the user to be logged in" do
+      put :update, params: { id: 22 }, format: :json
+      expect(response).to have_http_status(:unauthorized)
+    end
+
+    it "updates the status of relationship" do
+      login(user1)
+      user2.follow(user1.id)
+      put :update, params: { id: user2.id, allowed: true }, format: :json
+      expect(json_response[:allowed]).to eq(true)
+    end
+  end
+
   describe 'DELETE destroy' do
     it "requires the user to be logged in" do
       delete :destroy, params: { id: user2.id }, format: :json

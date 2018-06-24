@@ -14,6 +14,9 @@
 - `POST` - `/api/v1/relationships` - Follow an user
   [(docs)](./api/v1/relationships/create.md)
 
+- `PUT` - `/api/v1/relationships` - Allow a relationship
+  [(docs)](./api/v1/relationships/update.md)
+
 - `DELETE` - `/api/v1/relationships/:id` - Unfollow an user
   [(docs)](./api/v1/relationships/destroy.md)
 
