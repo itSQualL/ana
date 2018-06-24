@@ -63,4 +63,9 @@ describe User, type: :model do
       }.from(1).to(0)
     end
   end
+
+  context "notes" do
+    it "should list shared followees notes" do
+    end
+  end
 end

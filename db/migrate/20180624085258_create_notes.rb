@@ -4,8 +4,11 @@ class CreateNotes < ActiveRecord::Migration[5.2]
       t.references :user, null: false, index: :true
 
       t.text :body
+      t.boolean :shared, default: false
 
       t.timestamps
     end
+
+    add_index :notes, [:user_id, :shared]
   end
 end
