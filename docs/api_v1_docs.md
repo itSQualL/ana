@@ -1,11 +1,14 @@
 ## Api V1 Docs:
 
+You have a live api demo on: https://ana-example.herokuapp.com
+
 ### REGISTER
 
 - `POST` - `/auth` - Register a new user [(docs)](./auth/create.md)
 
-### LOG IN
-- `POST` - `/auth/sign_in` - Log In an user [(docs)](./auth/sign_in.md)
+### LOG IN / LOG OUT
+- `POST` - `/auth/sign_in` - Log in an user [(docs)](./auth/sign_in.md)
+- `DELETE` - `/auth/sign_out` - Log out an user
 
 ### RELATIONSHIPS
 - `GET` - `/api/v1/relationships` - List relationships with users
@@ -39,5 +42,18 @@
 
 - `DELETE` - `/api/v1/notes/:id` - Removes a note
   [(docs)](./api/v1/notes/destroy.md)
+
+### COLLECTION NOTES
+- `GET` - `/api/v1/collection_notes` - List collection notes
+  [(docs)](./api/v1/collection_notes/index.md)
+
+- `POST` - `/api/v1/collection_notes` - Create a collection note
+  [(docs)](./api/v1/collection_notes/create.md)
+
+- `PUT` - `/api/v1/collection_notes/:id` - Update a collection note
+  [(docs)](./api/v1/collection_notes/update.md)
+
+- `DELETE` - `/api/v1/collection_notes/:id` - Removes a collection note
+  [(docs)](./api/v1/collection_notes/destroy.md)
 
 

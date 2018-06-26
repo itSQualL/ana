@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :blocks, only: [:create, :destroy]
       resources :relationships, only: [:index, :create, :update, :destroy]
       resources :notes, only: [:index, :create, :update, :destroy]
+      resources :collection_notes, only: [:index, :create, :update, :destroy]
 
       namespace :admin do
         resources :users, only: [:index, :create, :update, :destroy]

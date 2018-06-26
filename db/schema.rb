@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_182309) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.text "body"
     t.boolean "shared", default: false
     t.datetime "created_at", null: false
