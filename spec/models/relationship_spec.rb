@@ -19,4 +19,9 @@ RSpec.describe Relationship, type: :model do
   it "shouldn't permit autofollow" do
     expect(Relationship.new(autofollow_attrs)).to_not be_valid
   end
+
+  it "shouldn't permit follow if you are blocked" do
+    user2.block(user1.id)
+    expect(Relationship.new(follower_id: user1.id, followed_id: user2.id)).to_not be_valid
+  end
 end
