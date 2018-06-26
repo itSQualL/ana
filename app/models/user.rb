@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :followees_notes, through: :followees, source: :notes
 
+  has_many :collection_notes
+  has_many :followees_collection_notes, through: :followees, source: :collection_notes
+
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
 

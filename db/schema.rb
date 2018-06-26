@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_085649) do
+ActiveRecord::Schema.define(version: 2018_06_26_182309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,23 @@ ActiveRecord::Schema.define(version: 2018_06_24_085649) do
     t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
   end
 
+  create_table "collection_notes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "shared", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "shared"], name: "index_collection_notes_on_user_id_and_shared"
+    t.index ["user_id"], name: "index_collection_notes_on_user_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "body"
     t.boolean "shared", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "collection_note_id"
+    t.index ["collection_note_id"], name: "index_notes_on_collection_note_id"
     t.index ["user_id", "shared"], name: "index_notes_on_user_id_and_shared"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
